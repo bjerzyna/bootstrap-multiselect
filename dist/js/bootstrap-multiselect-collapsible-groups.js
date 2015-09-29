@@ -39,7 +39,7 @@
 					r.addClass("disabled")
 				}
 				e("option", t).each(e.proxy(function(e, t) {
-					this.createOptionValue(t)
+					this.createOptionValue(t, true)
 				}, this))
 			} else {
 				cached_function.apply(this, arguments);
@@ -56,7 +56,7 @@
 			if (this.options.enableCollapsibleOptGroups && this.options.multiple) {
 				
 				e("li.multiselect-group input", this.$ul).off();
-				e("li.multiselect-group", this.$ul).siblings().not("li.multiselect-group, li.multiselect-all", this.$ul).each( function () {
+				e("li.multiselect-group", this.$ul).siblings().not("li.single-option, li.multiselect-group, li.multiselect-all", this.$ul).each( function () {
 					$(this).toggleClass('hidden', true);
 				});
 				e("li.multiselect-group", this.$ul).on("click", e.proxy(function(t) {
