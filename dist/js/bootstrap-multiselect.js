@@ -666,8 +666,12 @@
          * Create an option using the given select option.
          *
          * @param {jQuery} element
+         * @param {Boolean} inGroup whether is a single option or inside an optgroup
          */
-        createOptionValue: function(element) {
+        createOptionValue: function(element, inGroup) {
+            if (inGroup === 'undefined') {
+                inGroup = false;
+            }            
             var $element = $(element);
             if ($element.is(':selected')) {
                 $element.prop('selected', true);
@@ -679,6 +683,9 @@
             var inputType = this.options.multiple ? "checkbox" : "radio";
 
             var $li = $(this.options.templates.li);
+            if (!inGroup) {
+                $li.addClass('single-option');
+            }
             var $label = $('label', $li);
             $label.addClass(inputType);
 
